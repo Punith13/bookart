@@ -1,0 +1,3 @@
+<input type="text" placeholder="Search Books..." ng-model="searchBooks">
+
+<book-item ng-repeat="b in books | filter : searchBooks" obj="b" add-to-kart="addToKart(b)"></book-item>

@@ -1,0 +1,5 @@
+<kart-item ng-repeat="b in kartBooks" obj="b" remove-from-kart="removeFromKart(b)">Remove</kart-item>
+
+<p class="subtotal"><span>Subtotal : </span><span id="totalPrice">{{ totalPrice | currency : '&#x20B9' }}</span></p>
+<br><br>
+<a ng-click="buyBooks()" class="buy">Buy</a>

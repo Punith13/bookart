@@ -1,0 +1,15 @@
+<div class="book-item">
+
+    <img class="book-img" src="{{obj.img}}"> 
+    <div class="book-description">
+        
+    <p>{{obj.bookName}}</p>
+        
+    {{  obj.description }}
+    </div>
+
+    <a  class="add-to-krt-btn" ng-class="{'anchor-disable' : obj.disabled}" ng-click="addToKart({ obj : obj })" >{{obj.status}}</a>
+
+    <p><span>Price :</span>{{ obj.price | currency : '&#x20B9'  }}</p> 
+    
+</div>

@@ -1,0 +1,239 @@
+/*----------------------------------*/
+/* BASIC SETUP */
+/*----------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Muli', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {
+    zoom: 1
+}
+
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+@font-face{
+    font-family:'Canterbury'; 
+    src:url("/vendors/fonts/Canterbury.ttf");
+    
+}
+
+
+/*----------------------------------*/
+/* RESUABLE COMPONENTS */
+/*----------------------------------*/
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/*----------------------------------*/
+/* APP COMPONENTS */
+/*----------------------------------*/
+
+header{
+      position: relative; 
+}
+
+.menu-switch{
+    position: absolute; 
+    top : 15px; 
+    left : 200px; 
+    list-style: none;
+}
+
+.menu-switch li{
+    float: left; 
+    margin-left: 1px; 
+}
+
+.menu-switch li > a{
+    display: block; 
+    text-decoration: none;
+    padding: 5px;
+    height: 30px;
+    background-color: white; 
+    color: black;  
+    border: 1px solid brown;
+}
+
+.active-add{
+    background-color: brown !important; 
+    color: white !important;
+    border : none !important; 
+}
+
+/** ANCHOR TAG ***/ 
+
+.anchor-disable{
+    pointer-events: none; 
+    cursor: default; 
+    background-color: grey !important; 
+}
+
+
+/*----------------------------------*/
+/* LOGIN COMPONENTS */
+/*----------------------------------*/
+
+.sign-in{
+    position: absolute; 
+    right : 20px; 
+    top : 20px; 
+}
+
+/*----------------------------------*/
+/* Modal  */
+/*----------------------------------*/
+
+.modal{
+    display: none; 
+    position: fixed; 
+    padding-top: 100px; /* Location of the box */
+    top :0 ; 
+    left: 0 ; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+}
+
+.modal-visible{
+    display: block; 
+}
+
+
+/*** W3 Reference***/ 
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close {
+    color: #E2E8EE;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #e67e22;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #242424;
+    color: #E2E8EE;
+}
+
+.modal-header h3{
+    padding: 10px;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-body input[type=text] , input[type=email] , input[type=password] , input[type=tel]{
+    margin: 20px 0; 
+    width : 80%; 
+    border: none;
+    outline: none; 
+    border-bottom: 1px solid black; 
+}
+
+.modal-body .send-btn{
+    position: absolute; 
+    right: 10px; 
+    bottom: 10px;
+    background-color: #E2E8EE;
+    padding: 10px;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+
+.quantity{
+    position: absolute; 
+    top : 10px; 
+    right: 10px;
+}
+
+.subtotal{
+     font-weight: bold; 
+     position: absolute; 
+     right:300px; 
+}
+
+.buy{
+        position: absolute; 
+        right : 200px;
+        display: block; 
+        color: white; 
+        width : 140px; 
+        height: 50px; 
+        padding: 10px;
+        background-color: blue;
+        text-decoration: none;
+        text-align: center; 
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table ,th , td{
+    
+    border: 1px solid #ccc; 
+    padding: 5px;
+    text-align: center;
+    
+}
+
+.bold-underline{
+    font-weight: bold; 
+    text-decoration: underline; 
+}

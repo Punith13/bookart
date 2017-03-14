@@ -1,0 +1,23 @@
+<section class="address">
+    
+    <h3>Select Address: </h3>
+    
+    <address-item ng-show="oldAddress" class="address-output" ng-repeat="b in userAddress" obj="b"></address-item>
+    
+    <div class="new-address-holder">
+        
+        <button class="new-address-btn" ng-click="toggleNewAddress()">Add a new Address</button>
+
+        <form class="new-address" ng-if="showNewAddress" ng-submit="addNewAddress()">
+            <span>Address 1</span><input type="text" required ng-model="address.address1"><br> 
+            <span>Address 2</span><input type="text" required ng-model="address.address2"><br>
+            <span>Pin code</span><input type="text" required ng-model="address.pincode"><br>
+            <span>Mobile:</span><input type="tel" required ng-model="address.mobile"><br>
+            <input type="submit" class="btn" value="submit">
+        </form>    
+        
+        
+    </div>
+    
+
+</section>

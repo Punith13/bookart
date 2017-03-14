@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app="bookApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BooKart</title>
+    <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/dist/css/style.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,300,300i,400" rel="stylesheet">
+    <script src="/vendors/js/jquery.min.js"></script>
+    <script src="/vendors/js/angular.min.js"></script>
+    <script src="/vendors/js/angular.route.min.js"></script>
+    <script src="resources/dist/js/main-app.min.js"></script>
+</head>
+
+<body>
+
+<header ng-controller="headerController">
+    
+    <h1>Bookart</h1>
+
+    <ul class="menu-switch" ng-if="userAuthenticated">
+        <li><a ng-class="{'active-add' : isActive('/book')}"  href="#/book">Books</a></li>
+        <li><a ng-class="{'active-add' : isActive('/kart')}" href="#/kart">Kart</a></li>
+    </ul>
+    
+    <a class="sign-in" ng-hide="alreadySignIn" ng-click="showLoginForm()">Sign in</a>
+    <span class="sign-in" ng-show="alreadySignIn">Hello , {{ user }} </span>
+    
+     <div class="modal" ng-class="{'modal-visible' : modalVisible}">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" ng-click="closeModal()" >&times;</span>
+                    <h3>{{headerMsg}}</h3>
+                </div>
+                <div class="modal-body">
+                    
+                        <form class="login" ng-show="alreadyLogin" ng-submit="login()">
+                        <input type="email" placeholder="Enter email" required ng-model="logEmail">
+                        <input type="password" placeholder="Enter Password" required ng-model="logPassword">
+                        <input type="submit" class="send-btn" value="Login"><br>
+                        <span>Not Registered?</span><a ng-click="showRegisterForm()">Register here</a>
+                        </form>
+
+                        <form class="register" ng-show="registerHere" ng-submit="registerNewUser()">
+                        <input type="email" placeholder="Enter email" required ng-model="regEmail"> 
+                        <input type="password" placeholder="Enter Password" required ng-model="regPassword"> 
+                        <input type="tel" placeholder="Enter Mobile no" required ng-model="regTel">
+                        <input type="submit" class="send-btn" value="Register">
+                        </form>
+                    
+                        <div ng-show="loginRegisterStatus">
+                          {{loginRegisterStatusMessage}}
+                        </div>
+                
+                </div>
+                
+                <div class="modal-footer">
+                    
+                </div>
+          </div>
+    </div>
+        
+</header>
+    
+
+<div ng-view></div>
+    
+</body>
+
+</html>

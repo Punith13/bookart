@@ -1,0 +1,21 @@
+<div class="book-item">
+
+    <img class="book-img" src="{{obj.img}}"> 
+    <div class="book-description">
+        
+    <p>{{obj.bookName}}</p>
+        
+    {{  obj.description }}
+    </div>
+
+    <div class="quantity">
+        <a class="decrement"><i class="ion-ios-minus-outline"></i></a>
+        <span>{{ obj.quant }}</span>
+        <a class="increment"><i class="ion-ios-plus-outline"></i></a>
+    </div>
+    
+    <a  class="add-to-krt-btn" href="#/kart" ng-click="removeFromKart({ obj : obj })" ng-transclude></a>
+    
+    <p><span>Price :</span>{{ obj.price | currency : '&#x20B9'  }}</p> 
+
+</div>
