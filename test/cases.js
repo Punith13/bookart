@@ -140,10 +140,6 @@ describe('Database interactions' , () => {
                                      
                                        User.findById(punith._id)
                                             .populate('addresses')
-                                             .populate('orders.book', {
-                                                      path : 'bookObj' ,
-                                                      model : 'book'
-                                                    })
                                               .populate({
                                                     path:'orders', 
                                                     populate : {
@@ -152,10 +148,26 @@ describe('Database interactions' , () => {
                                                     }
                                                })
                                                .then( user => {
+                                        
+                                                  user.orders.forEach( (item , index) => {
+            
+                                                      item.book.forEach( (innerItem , innerIndex) => {
+                                                          
+                                                          const quantity = innerItem.quantity; 
+                                                          
+                                                          Book.findById(innerItem._id)
+                                                               .then (book => {
+                                                              
+                                                                book.quantity = quantity;
+                                                                item.book[innerIndex] = book; 
+                                                                assert( user.orders[0].book[0].quantity === 1 );
+                                                                done();
+                                                              });     
+                                                         });
+                                                      
+                                                   }); 
                                            
-                                                  console.log(user.orders[0].book[0]._id);
-                                                   //assert( user.orders[0].book[0].bookName === "A Day on Skates" ); 
-                                                   done();
+                                                  //console.log(user.orders[0].book[0].bookName);     
                                            
                                               });                               
                                           });                           

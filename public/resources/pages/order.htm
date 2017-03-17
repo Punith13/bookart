@@ -1,48 +1,58 @@
 <section class="order">
 
-    <h3>Order Summary:</h3>
+    <div ng-show="displayOrdSumm">
 
-    <p class="bold-underline">Books ordered:</p>
+        <h3>Order Summary:</h3>
 
-    <div class="price-summary">
+        <p class="bold-underline">Books ordered:</p>
+
+        <div class="price-summary">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>sl.</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ob in orderedBooks">
+                    <td>{{$index + 1}}</td>
+                    <td>{{ob.bookName}}</td>
+                    <td>{{ob.quant}}</td>
+                    <td>{{ob.price | currency : '&#x20B9' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="order-subtotal"><span>Subtotal: </span>{{ totalPrice | currency : '&#x20B9'}}</p>
+
+        </div>
+
+
+        <p class="bold-underline">Selected Address:</p>
+
+        <p>{{selectedAddress.address1}}</p>
+        <p>{{selectedAddress.address2}}</p>
+        <p>{{selectedAddress.pincode}}</p>
+        <p>{{selectedAddress.mobile}}</p>
+
+
+
+        <button class="btn" ng-click="changeAddress()">Select different Address</button>
+
+        <br><br>
+
+        <button class="btn" ng-click="addOrder()">Place Order</button>
+        
+    </div>
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th>sl.</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="ob in orderedBooks">
-                <td>{{$index + 1}}</td>
-                <td>{{ob.bookName}}</td>
-                <td>{{ob.quant}}</td>
-                <td>{{ob.price | currency : '&#x20B9' }}</td>
-            </tr>
-        </tbody>
-    </table>
- 
-    <p class="order-subtotal"><span>Subtotal: </span>{{ totalPrice | currency : '&#x20B9'}}</p>
+    <div ng-hide="displayOrdSumm">
+    
+    Your Order : {{orderSummaryID}} is successfully Placed. 
     
     </div>
-
-
-    <p class="bold-underline">Selected Address:</p>
-
-    <p>{{selectedAddress.address1}}</p>
-    <p>{{selectedAddress.address2}}</p>
-    <p>{{selectedAddress.pincode}}</p>
-    <p>{{selectedAddress.mobile}}</p>
-    
-    
-    
-    <button class="btn" ng-click="changeAddress()">Select different Address</button>
-    
-    <br><br>
-    
-    <button class="btn" ng-click="addOrder()">Place Order</button>
 
 </section>

@@ -8,5 +8,6 @@ module.exports = (app) => {
     app.post('/addAddress' , controller.addAddress);
     app.post('/addOrder' , controller.addOrder);
     app.post('/checkUser' , controller.checkUser); 
-    app.post('/getAddress' , controller.getAddress); 
+    app.post('/getAddress' , controller.getAddress);
+    app.post('/getBookById' , controller.getBookById); 
 }

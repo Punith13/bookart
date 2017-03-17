@@ -33,6 +33,8 @@ bookApp.service('authorizeService' , ['$http' ,'$rootScope' ,  function($http , 
                        
                        self.user.signedIn = true; 
                        
+                       console.log(self.user);
+                       
                    }else if(response == ''){
                        respCode = 204; 
                    }

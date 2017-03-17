@@ -22,6 +22,14 @@ module.exports = {
                .limit(offset)
                 .then( books => res.send(books));
     }, 
+    getBookById( req, res){
+        
+        const {_id} = req.body; 
+               
+        Book.findById(_id)
+            .then( book => res.send(book)); 
+        
+    },
     createUser(req, res){
         
         const props = req.body;
@@ -56,7 +64,14 @@ module.exports = {
                        
                         User.findById(user._id)
                                     .populate('addresses') // to view the addresses sub 
-                                    .then ( (user) => res.status(200).send(user)); 
+                                      .populate({
+                                                    path:'orders', 
+                                                    populate : {
+                                                        path : 'address', 
+                                                        model : 'address'
+                                                    }
+                                               })
+                                               .then( user => res.status(200).send(user) );
                        
                    } else {
                        res.status(412).send(user);
@@ -114,7 +129,7 @@ module.exports = {
                       user.orders.push(order);
                      return user.save();
                 })
-                .then(user => res.send(user));
+                .then( () => res.send(order));
             
         }); 
        

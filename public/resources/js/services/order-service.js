@@ -1,12 +1,20 @@
-bookApp.service('orderService' , ['$http', function($http){
+bookApp.service('orderService' , ['$http','$rootScope' , function($http, $rootScope){
     
-    this.addOrder = function(a , b , c){
-        
-        console.log(b);
-
+    var self = this; 
+    
+    self.recentOrder = {}; 
+    
+    self.addOrder = function(a , b , c){
+    
         $http.post('/addOrder' , { userId : a , bookId : b , addressId : c})
               .success( function(response){
-                console.log(response); 
+              
+                  self.recentOrder = response;
+            
+                  console.log(self.recentOrder);
+        
+                  $rootScope.$broadcast('updateOrder'); 
+                  
               })
               .catch( function(status , data){
                 console.log(status); 

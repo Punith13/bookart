@@ -10,6 +10,8 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         
     }
     
+    $scope.displayOrdSumm = true; 
+    
     $scope.totalPrice = kartService.totalPrice ; 
     
     $scope.addOrder = function(){
@@ -26,7 +28,13 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
             
         orderService.addOrder( userId , bookId , addressId); 
         
-        
     }
+    
+    $scope.$on('updateOrder' , function(evnt, data){
+        
+        $scope.displayOrdSumm = false; 
+        $scope.orderSummaryID = "ORD" + orderService.recentOrder._id; 
+        
+    }); 
     
 }]); 

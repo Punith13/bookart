@@ -52,6 +52,8 @@ bookApp.controller('headerController' , ['$scope', '$location', '$timeout', 'aut
     
     $scope.$on('loginStatus' , function(evnt , data){
         
+        console.log(data);
+        
      $scope.setLoginView(false, false , true); 
     
         switch(data){

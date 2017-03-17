@@ -19,4 +19,17 @@ bookApp.service('getBookItemService' , ['$rootScope', '$http',  function($rootSc
 
     }
     
+    self.getBookById = function(_id){
+        
+        $http.post('/getBookById' , { _id : _id})
+             .success( function(res) {
+            
+        })
+          .error( function( data , status){
+            console.log(status); 
+        })
+        
+        
+    }
+    
 }]); 
