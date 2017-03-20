@@ -4,6 +4,8 @@ bookApp.service('getBookItemService' , ['$rootScope', '$http',  function($rootSc
 
     self.allBooks = []; 
     
+    self.orderedBooks = {}; 
+    
     self.getBookData = function(){
 
         $http.get('/getBookData?skip=0&offset=10')
@@ -24,10 +26,13 @@ bookApp.service('getBookItemService' , ['$rootScope', '$http',  function($rootSc
         $http.post('/getBookById' , { _id : _id})
              .success( function(res) {
             
-        })
+             self.orderedBooks = res; 
+             $rootScope.$broadcast('orderedBooksReceived');
+            
+         })
           .error( function( data , status){
             console.log(status); 
-        })
+         })
         
         
     }

@@ -14,7 +14,7 @@ bookApp.directive('kartItem' , ['kartService' , function(kartService){
             
            for(var i=0; i < kartService.kartBooks.length ; i++){
                if(kartService.kartBooks[i]._id == scope.obj._id){
-                       var quantity = kartService.kartBooks[i].quant;
+                       var quantity = kartService.kartBooks[i].quantity;
                    }
              }
             
@@ -30,7 +30,7 @@ bookApp.directive('kartItem' , ['kartService' , function(kartService){
                
                  for(var i=0; i < kartService.kartBooks.length ; i++){
                        if(kartService.kartBooks[i]._id == scope.obj._id){
-                               kartService.kartBooks[i].quant = quantity;
+                               kartService.kartBooks[i].quantity = quantity;
                                scope.$apply();
                            }
                    }
@@ -44,7 +44,7 @@ bookApp.directive('kartItem' , ['kartService' , function(kartService){
                 
                 for(var i=0; i < kartService.kartBooks.length ; i++){
                        if(kartService.kartBooks[i]._id == scope.obj._id){
-                               kartService.kartBooks[i].quant = quantity;
+                               kartService.kartBooks[i].quantity = quantity;
                                scope.$apply();
                            }
                    } 

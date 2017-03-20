@@ -25,6 +25,8 @@ $scope.removeFromKart = function(obj){
 
 $scope.buyBooks = function(){
     
+    kartService.fromKart = true; 
+    
     if(authorizeService.user.signedIn){
         
         if(kartService.kartBooks.length == 0){

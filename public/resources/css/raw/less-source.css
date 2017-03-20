@@ -102,6 +102,23 @@
   margin-top: 20px;
 }
 
+.my-order {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  transition: 0.2s linear;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #ccc;
+  width: 500px;
+}
+.my-order .order-id {
+  margin-bottom: 10px;
+}
+.my-order:hover {
+  background-color: blue;
+  color: white;
+}
+
 .order * {
   margin-left: 20px;
 }

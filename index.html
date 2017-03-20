@@ -23,7 +23,8 @@
 
     <ul class="menu-switch" ng-if="userAuthenticated">
         <li><a ng-class="{'active-add' : isActive('/book')}"  href="#/book">Books</a></li>
-        <li><a ng-class="{'active-add' : isActive('/kart')}" href="#/kart">Kart</a></li>
+        <li><a ng-class="{'active-add' : isActive('/kart')}" href="#/kart">Kart</a>
+        </li><li><a ng-class="{'active-add' : isActive('/myorder')}" href="#/myorder">Orders</a></li>
     </ul>
     
     <a class="sign-in" ng-hide="alreadySignIn" ng-click="showLoginForm()">Sign in</a>

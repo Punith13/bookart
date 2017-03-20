@@ -4,15 +4,17 @@ bookApp.service('orderService' , ['$http','$rootScope' , function($http, $rootSc
     
     self.recentOrder = {}; 
     
-    self.addOrder = function(a , b , c){
+    self.selectedOrder = {}; 
     
-        $http.post('/addOrder' , { userId : a , bookId : b , addressId : c})
+    self.addOrder = function(a , b , c, d){
+    
+        $http.post('/addOrder' , { userId : a , bookId : b , addressId : c , totalPrice : d})
               .success( function(response){
               
                   self.recentOrder = response;
             
                   console.log(self.recentOrder);
-        
+                    
                   $rootScope.$broadcast('updateOrder'); 
                   
               })
@@ -21,5 +23,20 @@ bookApp.service('orderService' , ['$http','$rootScope' , function($http, $rootSc
               });
 
     }
+    
+    self.getOrderDetails = function(_id){
+        
+        $http.post('/getOrderDetails' , {_id : _id})
+              .success( function(response){
+            
+            console.log(respone); 
+        })
+        .catch( function(status , data){
+            console.log(status);
+        });
+    
+    }
+    
+    
 
 }]); 

@@ -25,9 +25,9 @@ module.exports = {
     getBookById( req, res){
         
         const {_id} = req.body; 
-               
-        Book.findById(_id)
-            .then( book => res.send(book)); 
+           
+        Book.find( { _id : { $in : _id} } )
+            .then( books => res.send(books)); 
         
     },
     createUser(req, res){
@@ -117,11 +117,13 @@ module.exports = {
         const {userId} = req.body; 
         const {bookId} = req.body; 
         const {addressId} = req.body; 
+        const {totalPrice} = req.body;
         
         Order.create({
              orderDate : new Date(), 
              book : bookId , 
-             address : addressId
+             address : addressId, 
+             price : totalPrice
          })
          .then( (order) => {
                 User.findById(userId)
@@ -132,7 +134,22 @@ module.exports = {
                 .then( () => res.send(order));
             
         }); 
-       
-       
+    
+    }, 
+    getUserById(req , res){
+        
+        const {_id} = req.body; 
+        
+        User.findById(_id)
+             .populate('addresses') // to view the addresses sub 
+              .populate({
+                         path:'orders', 
+                         populate : {
+                                path : 'address', 
+                                model : 'address'
+                                    }
+                        })
+                        .then( user => res.status(200).send(user) );
+        
     }
 }

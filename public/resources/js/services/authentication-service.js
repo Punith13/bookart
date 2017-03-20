@@ -33,8 +33,6 @@ bookApp.service('authorizeService' , ['$http' ,'$rootScope' ,  function($http , 
                        
                        self.user.signedIn = true; 
                        
-                       console.log(self.user);
-                       
                    }else if(response == ''){
                        respCode = 204; 
                    }
@@ -53,6 +51,23 @@ bookApp.service('authorizeService' , ['$http' ,'$rootScope' ,  function($http , 
         
         return self.user; 
         
+    }
+    
+    this.getUserById = function(_id){
+        
+        $http.post("/getUserById" , {_id : _id})
+              .success( function(response){
+            
+               self.user = response;
+               self.user.signedIn = true; 
+             
+               $rootScope.$broadcast('updatedUser');
+        })
+        .catch( function(status , data){
+            console.log(status); 
+        })
+        
+
     }
     
     

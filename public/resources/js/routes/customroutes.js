@@ -21,6 +21,11 @@ bookApp.config(['$routeProvider', function($routeProvider){
      .when('/order', {
          templateUrl : '/resources/pages/order.htm',
          controller : 'orderController'
+     }) 
+         
+    .when('/myorder', {
+         templateUrl : '/resources/pages/myorder.htm',
+         controller : 'myOrderController'
      })
 
  }]);

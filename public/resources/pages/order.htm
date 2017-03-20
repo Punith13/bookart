@@ -2,7 +2,7 @@
 
     <div ng-show="displayOrdSumm">
 
-        <h3>Order Summary:</h3>
+        <h3>Order Summary:</h3><span ng-hide="createOrder">{{ orderId }}</span>
 
         <p class="bold-underline">Books ordered:</p>
 
@@ -21,7 +21,7 @@
                 <tr ng-repeat="ob in orderedBooks">
                     <td>{{$index + 1}}</td>
                     <td>{{ob.bookName}}</td>
-                    <td>{{ob.quant}}</td>
+                    <td>{{ob.quantity}}</td>
                     <td>{{ob.price | currency : '&#x20B9' }}</td>
                 </tr>
             </tbody>
@@ -41,11 +41,11 @@
 
 
 
-        <button class="btn" ng-click="changeAddress()">Select different Address</button>
+        <button class="btn" ng-click="changeAddress()" ng-show="createOrder">Select different Address</button>
 
         <br><br>
 
-        <button class="btn" ng-click="addOrder()">Place Order</button>
+        <button class="btn" ng-click="addOrder()"  ng-show="createOrder">Place Order</button>
         
     </div>
     

@@ -1,0 +1,13 @@
+<section class="my-order" ng-click="showOrderDet({ obj : obj})">
+
+    <div class="order-id">
+    <span>Order Id: </span>{{ obj._id}}<br>
+    </div>
+    <div class="order-date">
+    <span>Order Date: </span>{{ obj.orderDate | date : "medium" }} 
+    </div>
+       
+
+</section>
+
+

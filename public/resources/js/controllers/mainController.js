@@ -8,7 +8,7 @@ var Obj = function(_id , author , awards , bookName , description , disabled , i
     this.img = img ;
     this.price = price ;
     this.published = published ;
-    this.quant = 1; 
+    this.quantity = 1; 
 }
 
 bookApp.controller("mainController", ['$scope','$location', 'getBookItemService' , 'kartService', function($scope ,  $location , getBookItemService , kartService ){ 
@@ -35,7 +35,7 @@ $scope.$on('bookDataReceived' , function(evnt, data){
 $scope.addToKart = function(obj){
         
     var passObj = new Obj(obj._id , obj.author , obj.awards , obj.bookName , obj.description , obj.disabled , obj.img , obj.price , obj.published); 
-            
+    
     kartService.addKart(passObj);
 
     for(var i=0 ; i < getBookItemService.allBooks.length ; i++){
