@@ -1,4 +1,4 @@
-bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'crudAddress' ,'authorizeService' ,'orderService' ,  function($scope , $location,  kartService, crudAddress , authorizeService , orderService){
+bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'crudAddress' ,'authorizeService' ,'orderService' , 'getBookItemService' ,  function($scope , $location,  kartService, crudAddress , authorizeService , orderService , getBookItemService){
     
     $scope.displayOrdSumm = true;
     
@@ -62,6 +62,13 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         
         $scope.displayOrdSumm = false; 
         $scope.orderSummaryId = "ORD" + orderService.recentOrder._id;
+
+        for (var i = 0; i < getBookItemService.allBooks.length; i++) {
+            getBookItemService.allBooks[i].disabled = false;
+            getBookItemService.allBooks[i].status = "Add to Kart";
+        }
+
+        kartService.kartBooks = []; 
         
         
     }); 
@@ -73,6 +80,11 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         
     })
     
+    $scope.continueShopping = function(){
+     
+    $location.path('/book');
+        
+    }
     
     
     
