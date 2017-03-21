@@ -6,9 +6,9 @@ bookApp.service('orderService' , ['$http','$rootScope' , function($http, $rootSc
     
     self.selectedOrder = {}; 
     
-    self.addOrder = function(a , b , c, d){
+    self.addOrder = function(a , b , c, d , e){
     
-        $http.post('/addOrder' , { userId : a , bookId : b , addressId : c , totalPrice : d})
+        $http.post('/addOrder' , { userId : a , bookId : b , addressId : c , totalPrice : d , status : e})
               .success( function(response){
               
                   self.recentOrder = response;
@@ -37,6 +37,21 @@ bookApp.service('orderService' , ['$http','$rootScope' , function($http, $rootSc
     
     }
     
+    self.cancelOrder = function(_id){
+        
+        $http.post('/updateOrderById' , { _id : _id , status : "Cancelled"})
+             .success( function(response){
+            
+              $rootScope.$broadcast('cancelledOrder');
+            
+        }).catch( function(status , data){
+
+            
+        });
+        
+        
+        
+    }
     
 
 }]); 

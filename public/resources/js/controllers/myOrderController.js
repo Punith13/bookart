@@ -49,7 +49,8 @@ bookApp.controller('myOrderController',['$scope','$location', 'authorizeService'
         orderService.selectedOrder._id = $scope.myOrder._id; 
         orderService.selectedOrder.book = $scope.myOrder.book; 
         orderService.selectedOrder.address = $scope.myOrder.address;
-        orderService.selectedOrder.totalPrice = $scope.myOrder.price; 
+        orderService.selectedOrder.totalPrice = $scope.myOrder.price;
+        orderService.selectedOrder.status = $scope.myOrder.status; 
         
         $location.path('/order');
         

@@ -39,7 +39,10 @@
         <p>{{selectedAddress.pincode}}</p>
         <p>{{selectedAddress.mobile}}</p>
 
-
+        <p class="bold-underline" ng-hide="createOrder">Status:</p>
+        <span ng-hide="createOrder">{{status}}</span>
+        
+        <button class="btn" ng-click="cancelOrder()" ng-hide="createOrder" ng-if="valid">Cancel Order</button>
 
         <button class="btn" ng-click="changeAddress()" ng-show="createOrder">Select different Address</button>
 
@@ -51,7 +54,7 @@
     
     <div ng-hide="displayOrdSumm">
     
-    Your Order : {{orderSummaryID}} is successfully Placed. 
+    Your Order : {{orderSummaryId}} is successfully Placed. 
     
     </div>
 

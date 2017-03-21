@@ -11,4 +11,5 @@ module.exports = (app) => {
     app.post('/getAddress' , controller.getAddress);
     app.post('/getBookById' , controller.getBookById); 
     app.post('/getUserById' , controller.getUserById);
+    app.post('/updateOrderById' , controller.updateOrderById);
 }

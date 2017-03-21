@@ -5,24 +5,25 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
     if(kartService.fromKart){
       
         $scope.orderedBooks = kartService.kartBooks; 
-
-        $scope.selectedAddress = crudAddress.selectedAddress; 
-
-        $scope.totalPrice = kartService.totalPrice ;
-        
+        $scope.selectedAddress = crudAddress.selectedAddress;
+        $scope.totalPrice = kartService.totalPrice ;     
         $scope.createOrder = true; 
         
     }else{
         
-        $scope.orderId = 'ORD' + orderService.selectedOrder._id; 
-        
+        $scope.orderId = 'ORD' + orderService.selectedOrder._id;        
         $scope.orderedBooks = orderService.selectedOrder.book; 
-
         $scope.selectedAddress = orderService.selectedOrder.address; 
-
-        $scope.totalPrice = orderService.selectedOrder.totalPrice ;
-        
+        $scope.totalPrice = orderService.selectedOrder.totalPrice ;   
         $scope.createOrder = false;
+        $scope.status = orderService.selectedOrder.status ; 
+        
+        if($scope.status == "Cancelled" || $scope.status == "Delivered"){
+            $scope.valid = false; 
+        }else {
+            $scope.valid = true; 
+        }
+        
         
     }
     
@@ -47,15 +48,35 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         
         var addressId = crudAddress.selectedAddress._id; 
             
-        orderService.addOrder( userId , bookId , addressId , kartService.totalPrice); 
+        orderService.addOrder( userId , bookId , addressId , kartService.totalPrice , "Received"); 
+        
+    }
+    
+    $scope.cancelOrder = function(){
+        
+        orderService.cancelOrder(orderService.selectedOrder._id); 
         
     }
     
     $scope.$on('updateOrder' , function(evnt, data){
         
         $scope.displayOrdSumm = false; 
-        $scope.orderSummaryID = "ORD" + orderService.recentOrder._id; 
+        $scope.orderSummaryId = "ORD" + orderService.recentOrder._id;
+        
         
     }); 
+    
+    $scope.$on('cancelledOrder' , function(evnt , data){
+        
+        $scope.status = "Cancelled"; 
+        $scope.valid = false; 
+        
+    })
+    
+    
+    
+    
+    
+    
     
 }]); 

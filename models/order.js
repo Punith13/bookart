@@ -14,7 +14,8 @@ const OrderSchema = new Schema({
         type : Schema.Types.ObjectId , 
         ref : 'address' // referencing to address
     }, 
-    price : Number
+    price : Number, 
+    status : String
 }); 
 
 const Order = mongoose.model('order' , OrderSchema )

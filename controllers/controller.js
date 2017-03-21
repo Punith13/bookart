@@ -118,12 +118,14 @@ module.exports = {
         const {bookId} = req.body; 
         const {addressId} = req.body; 
         const {totalPrice} = req.body;
+        const {status} = req.body; 
         
         Order.create({
              orderDate : new Date(), 
              book : bookId , 
              address : addressId, 
-             price : totalPrice
+             price : totalPrice , 
+             status : status 
          })
          .then( (order) => {
                 User.findById(userId)
@@ -135,6 +137,17 @@ module.exports = {
             
         }); 
     
+    },
+    updateOrderById(req, res){
+        
+        const {_id} = req.body; 
+        const {status} = req.body; 
+        
+        
+        Order.findByIdAndUpdate( _id , { status : status})
+             .then( () => Order.findById(_id))
+               .then( (order) => res.send(order));
+        
     }, 
     getUserById(req , res){
         
