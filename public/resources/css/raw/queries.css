@@ -1,60 +1,46 @@
 @media only screen and (max-width :1500px) {
-    .timeline-stop-point p{
-        font-size : 100%;
+
+    .book-item .book-description{
+        font-size: 80%;
     }
     
 }
 
 @media only screen and (max-width :1440px) {
-    .timeline-stop-point p{
-        font-size : 90%;
-    }
+ 
     
 }
 
 @media only screen and (max-width :1300px) {
-    .timeline-stop-point p{ 
-        font-size : 80%;
-    }
+  
     
 }
 
 @media only screen and (max-width :1200px) {
-    .timeline-stop-point p{ 
-        font-size : 70%;
+
+    .book-item .book-description{
+        font-size: 70%;
     }
-    
 }
 
 @media only screen and (max-width :1060px) {
-    .timeline-stop-point p{ 
-        font-size : 60%;
-    }
+
+
     
 }
 
 @media only screen and (max-width :900px) {
     
-    header a{
-        font-size: 24px;
-    }
 
-    .timeline-stop-point p{ 
-        font-size : 50%;
-    }
 
 }
 
 @media only screen and (max-width :760px) {
-    .timeline-stop-point p{
-        font-size : 40%;
-    }
+
     
 }
 
 @media only screen and (max-width :640px) {
-    .timeline-stop-point p{
-        font-size : 30%;
-    }
+
     
 }

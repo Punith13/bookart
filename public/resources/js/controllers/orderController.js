@@ -78,7 +78,7 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         $scope.status = "Cancelled"; 
         $scope.valid = false; 
         
-    })
+    });
     
     $scope.continueShopping = function(){
      
@@ -86,9 +86,6 @@ bookApp.controller('orderController' , ['$scope','$location', 'kartService' ,'cr
         
     }
     
-    
-    
-    
-    
+
     
 }]); 
